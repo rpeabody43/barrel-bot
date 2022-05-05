@@ -8,6 +8,7 @@ def fastest_pitch (day: str) -> str:
     data = statcast(start_dt=day, verbose=False)
     idx = data['release_speed'].idxmax()
     velo = data.at[idx, 'release_speed']
-    pitch_data = get_pitch.data_from_idx(data, idx, day, video=True)
+    pitch_data = get_pitch.data_from_idx(data, idx, day)
 
-    return __fmt(pitch_data['pitcher_name'], velo)
+    print(__fmt(pitch_data['pitcher_name'], velo))
+    return pitch_data

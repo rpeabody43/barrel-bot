@@ -1,7 +1,7 @@
 from pandas import DataFrame
 import names
 
-def data_from_idx (df: DataFrame, idx: int, date: str, video: bool = False) -> dict:
+def data_from_idx (df: DataFrame, idx: int, date: str) -> dict:
     batter_id = df.at[idx, 'batter']
     description = df.at[idx, 'des']
     data = {

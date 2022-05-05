@@ -28,7 +28,7 @@ def get_max_barrel (day: str, hr: bool = False) -> dict:
         ang = df.at[idx, 'launch_angle']
         if is_barrel(velo, ang) and df.at[idx, 'type'] == 'X':
             if not hr or df.at[idx, 'events'] == 'home_run':
-                hit_data = get_pitch.data_from_idx(df, idx, day, video=True)
+                hit_data = get_pitch.data_from_idx(df, idx, day)
                 break
         # Remove the cell so it doesn't get returned again
         df.drop([idx], axis=0, inplace=True)
