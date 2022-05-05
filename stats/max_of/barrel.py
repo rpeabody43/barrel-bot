@@ -12,10 +12,11 @@ def is_barrel (speed: int, ang: int) -> bool:
         return True
     return False
 
-def __fmt (name: str, velo: int, ang: int) -> str:
-    return f'{name} hit the hardest barrel at {velo} mph and {ang}°'
+def __fmt (name: str, velo: int, ang: int, hr: bool) -> str:
+    barrel = 'home run' if hr else 'barrel'
+    return f'{name} hit the hardest {barrel} at {velo} mph and {ang}°'
 
-def get_max_barrel (day: str) -> str:
+def get_max_barrel (day: str, hr: bool = False) -> dict:
     df = statcast(start_dt=day, verbose=False)
     velo = 0
     ang = 0
@@ -26,8 +27,10 @@ def get_max_barrel (day: str) -> str:
         velo = df.at[idx, 'launch_speed']
         ang = df.at[idx, 'launch_angle']
         if is_barrel(velo, ang) and df.at[idx, 'type'] == 'X':
-            hit_data = get_pitch.data_from_idx(df, idx, day, video=True)
-            break
-        else:
-            df.drop([idx], axis=0, inplace=True)
-    return __fmt(hit_data['batter_name'], velo, ang)
+            if not hr or df.at[idx, 'events'] == 'home_run':
+                hit_data = get_pitch.data_from_idx(df, idx, day, video=True)
+                break
+        # Remove the cell so it doesn't get returned again
+        df.drop([idx], axis=0, inplace=True)
+    print(__fmt(hit_data['batter_name'], velo, ang, hr))
+    return hit_data
