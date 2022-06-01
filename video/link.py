@@ -1,7 +1,7 @@
 import requests as r
 import json
 
-def __find_pitch (team_data: list[str], at_bat: int, pitch_num: int) -> str:
+def __find_pitch (team_data: 'list[str]', at_bat: int, pitch_num: int) -> str:
     ab_pitches = []
     for pitch in team_data:
         if pitch['ab_number'] == at_bat:

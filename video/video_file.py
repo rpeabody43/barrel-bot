@@ -15,7 +15,7 @@ def __scrape_video (url: str, f_name: str = 'temp') -> str:
     soup = BeautifulSoup(page.content, 'html.parser')
     vid_url = soup.find('video', id='sporty').find('source')['src']
     # TODO change file name
-    urlreq.urlretrieve(vid_url, f'temp\\{f_name}.mp4')
+    # urlreq.urlretrieve(vid_url, f'temp\\{f_name}.mp4')
     return vid_url
 
 

@@ -1,5 +1,5 @@
 from pandas import DataFrame
-import names
+import stats.names as names
 
 def data_from_idx (df: DataFrame, idx: int, date: str) -> dict:
     batter_id = df.at[idx, 'batter']
@@ -11,6 +11,8 @@ def data_from_idx (df: DataFrame, idx: int, date: str) -> dict:
         'pitch_num' : df.at[idx, 'pitch_number'],
         # For some reason only the pitcher gets their formatted name listed
         'pitcher_name' : names.to_normal_name(df.at[idx, 'player_name']),
-        'batter_name' : names.get_player_name(batter_id, description)
+        'batter_name' : names.get_player_name(batter_id, description),
+        'batting_team' : df.at[idx, 'home_team'] if df.at['inning_topbot'] == 'bot' else df.at[idx, 'away_team'],
+        'type' : df.at[idx, 'type']
     }
     return data

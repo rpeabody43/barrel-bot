@@ -1,6 +1,5 @@
 import re
 from pybaseball import playerid_reverse_lookup as prl
-from pandas import DataFrame
 
 def __fmt (name: str) -> str:
     name = name.title()
@@ -19,10 +18,11 @@ def get_player_name (id: int, des=''):
     last_name = player.at[0, 'name_last']
     re.sub(r'\W+', '', last_name)
     name = __fmt(f'{first_name} {last_name}')
-    if des == '' or des[:len(name)].lower() != name.lower():
+    if des == '' or des.index(name) < 0:
         return name
     else:
-        name = des[:len(name)]
+        idx = des.index(name)
+        name = des[idx:idx+len(name)]
     return name
 
 def to_normal_name (name: str) -> str:
