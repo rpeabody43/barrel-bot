@@ -8,9 +8,7 @@ def main():
     auto_open = True
     date = input('YYYY-MM-DD: ')
     pitch = barrel(date)
-    url = video_file.get_video(pitch)
-    if auto_open:
-        webbrowser.open(url, new=2)
+    filepath = video_file.get_video(pitch)
 
 if __name__  == '__main__':
     main()

@@ -12,7 +12,8 @@ def data_from_idx (df: DataFrame, idx: int, date: str) -> dict:
         # For some reason only the pitcher gets their formatted name listed
         'pitcher_name' : names.to_normal_name(df.at[idx, 'player_name']),
         'batter_name' : names.get_player_name(batter_id, description),
-        'batting_team' : df.at[idx, 'home_team'] if df.at['inning_topbot'] == 'bot' else df.at[idx, 'away_team'],
-        'type' : df.at[idx, 'type']
+        'batting_team' : df.at[idx, 'home_team'] if df.at[idx, 'inning_topbot'] == 'Bot' else df.at[idx, 'away_team'],
+        'type' : df.at[idx, 'type'],
+        'outcome' : df.at[idx, 'events']
     }
     return data
