@@ -36,7 +36,6 @@ def _fmt_tweet (pitch: dict):
     ev = pitch['velo']
     ang = pitch['ang']
     lines = [ 
-        f'--{date}--',
         f'{hitter_name} off {pitcher_name}',
         f'🔥 {ev} mph, {ang}°',
         outcome,

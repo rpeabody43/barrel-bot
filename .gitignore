@@ -1,7 +1,7 @@
 temp/
 .env
 env/
-barrel_test.py
+branding/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
