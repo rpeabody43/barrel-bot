@@ -18,7 +18,7 @@ def get_player_name (id: int, des=''):
     last_name = player.at[0, 'name_last']
     re.sub(r'\W+', '', last_name)
     name = __fmt(f'{first_name} {last_name}')
-    if des == '' or des.index(name) < 0:
+    if des == '' or name not in des:
         return name
     else:
         idx = des.index(name)

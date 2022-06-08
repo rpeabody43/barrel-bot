@@ -17,13 +17,18 @@ def test_tweet ():
         response = api.update_status(tweet)
         print(response)
 
-def tweet_with_video (pitch: dict, filepath: str):
+def tweet_with_video (pitch: dict, filepath: str, reply: int = None):
     text = _fmt_tweet(pitch)
+    is_reply = reply != None
+    if is_reply:
+        text = '@mlb_barrels\nHere\'s the hardest hit ball that left the yard yesterday\n' + text
     api = authenticate()
     media: tweepy.Media = api.media_upload(filepath, media_category='tweet_video')
-    id = media.media_id_string
+    media_id = media.media_id_string
     # print(media)
-    response = api.update_status(status=text, media_ids=[id])
+    response: tweepy.Tweet = api.update_status(status=text, media_ids=[media_id], in_reply_to_status_id=reply)
+    id = response.id
+    return id
     # print(response)
 
 def _fmt_tweet (pitch: dict):
@@ -31,8 +36,13 @@ def _fmt_tweet (pitch: dict):
     date = pitch['date']
     hitter_name = pitch['batter_name']
     pitcher_name = pitch['pitcher_name']
-    team_hashtag = hashtags[pitch['batting_team']]
-    outcome = outcomes[pitch['outcome']]
+    try:
+        team_hashtag = hashtags[pitch['batting_team']]
+        outcome = outcomes[pitch['outcome']]
+    except KeyError:
+        htag_key = pitch['batting_team']
+        outcome_key = pitch['outcome']
+        print(f'exception on hashtag key {htag_key} or outcome key {outcome_key}')
     ev = pitch['velo']
     ang = pitch['ang']
     lines = [ 

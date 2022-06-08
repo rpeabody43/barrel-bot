@@ -14,6 +14,7 @@ hashtags = {
     'CLE' : '#ForTheLand',
     'DET' : '#DetroitRoots',
     'KCR' : '#TogetherRoyal',
+    'KC' : '#TogetherRoyal',
     'MIN' : '#MNTwins',
     # AL West
     'HOU' : '#LevelUp',
@@ -48,6 +49,6 @@ outcomes = {
     'triple' : 'Triple 3️⃣',
     'home_run' : 'Home Run 💣',
     'grounded_into_double_play' : 'GIDP 😵',
-    'force_out' : 'Force Out ❌',
-    'fly_out' : 'Fly Out ✈️'
+    'force_out' : 'Out ❌',
+    'field_out' : 'Out ❌'
 }
