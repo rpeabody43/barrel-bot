@@ -1,0 +1,1 @@
+from .max_of.barrel import get_max_barrel

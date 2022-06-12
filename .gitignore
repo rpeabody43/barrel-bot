@@ -4,6 +4,7 @@ env/
 branding/
 .aws-sam/
 .idea/
+pkg_size.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

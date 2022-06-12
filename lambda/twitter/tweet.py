@@ -1,9 +1,10 @@
 import tweepy
-import twitter.credentials as creds
-from twitter.formatting import hashtags, outcomes 
+
+from .credentials import load_credentials
+from .formatting import hashtags, outcomes
 
 def authenticate () -> tweepy.API:
-    keys = creds.load_credentials()
+    keys = load_credentials()
     auth = tweepy.OAuthHandler(keys['CONSUMER_KEY'], keys['CONSUMER_SECRET'])
     auth.set_access_token(keys['ACCESS_TOKEN'], keys['ACCESS_SECRET'])
     api = tweepy.API(auth)
