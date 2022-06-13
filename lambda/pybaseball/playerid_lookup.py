@@ -7,24 +7,24 @@ from typing import List, Tuple
 import pandas as pd
 import requests
 
-from . import cache
+# from . import cache
 
 url = "https://raw.githubusercontent.com/chadwickbureau/register/master/data/people.csv"
 
 _client = None
 
 
-def get_register_file():
-    return os.path.join(cache.config.cache_directory, 'chadwick-register.csv')
+# def get_register_file():
+#     return os.path.join(cache.config.cache_directory, 'chadwick-register.csv')
 
 
-@cache.df_cache()
+# @cache.df_cache()
 def chadwick_register(save: bool = False) -> pd.DataFrame:
     ''' Get the Chadwick register Database '''
 
-    if os.path.exists(get_register_file()):
-        table = pd.read_csv(get_register_file())
-        return table
+    # if os.path.exists(get_register_file()):
+    #     table = pd.read_csv(get_register_file())
+    #     return table
 
     print('Gathering player lookup table. This may take a moment.')
     s = requests.get(url).content
@@ -42,8 +42,8 @@ def chadwick_register(save: bool = False) -> pd.DataFrame:
     # Reorder the columns to the right order
     table = table[cols_to_keep]
 
-    if save:
-        table.to_csv(get_register_file(), index=False)
+    # if save:
+    #     table.to_csv(get_register_file(), index=False)
 
     return table
 

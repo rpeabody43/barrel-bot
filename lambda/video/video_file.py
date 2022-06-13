@@ -17,7 +17,7 @@ def __scrape_video (url: str, f_name: str = 'temp') -> str:
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
     vid_url = soup.find('video', id='sporty').find('source')['src']
-    path = f'tmp\\{f_name}.mp4'
+    path = f'/tmp/{f_name}.mp4'
     urlreq.urlretrieve(vid_url, path)
     return path
 

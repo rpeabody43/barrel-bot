@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 import pybaseball.datasources.statcast as statcast_ds
 
-from . import cache
+# from . import cache
 from .utils import sanitize_date_range, statcast_date_range
 
 _SC_SINGLE_GAME_REQUEST = "/statcast_search/csv?all=true&type=details&game_pk={game_pk}"
@@ -19,7 +19,7 @@ _SC_SMALL_REQUEST = "/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=
 class StatcastException(Exception):
     pass
 
-@cache.df_cache(expires=365)
+# @cache.df_cache(expires=365)
 def _small_request(start_dt: date, end_dt: date, team: Optional[str] = None) -> pd.DataFrame:
     data = statcast_ds.get_statcast_data_from_csv_url(
         _SC_SMALL_REQUEST.format(start_dt=str(start_dt), end_dt=str(end_dt), team=team if team else '')
@@ -45,9 +45,9 @@ you could lose a lot of progress. Enabling caching will allow you to immediately
 subqueries if that happens.'''
 
 
-def _check_warning(start_dt: date, end_dt: date) -> None:
-    if not cache.config.enabled and (end_dt - start_dt).days >= 42:
-        warnings.warn(_OVERSIZE_WARNING)
+# def _check_warning(start_dt: date, end_dt: date) -> None:
+#     if not cache.config.enabled and (end_dt - start_dt).days >= 42:
+#         warnings.warn(_OVERSIZE_WARNING)
 
 
 def _handle_request(start_dt: date, end_dt: date, step: int, verbose: bool,
@@ -56,7 +56,7 @@ def _handle_request(start_dt: date, end_dt: date, step: int, verbose: bool,
     Fulfill the request in sensible increments.
     """
 
-    _check_warning(start_dt, end_dt)
+    # _check_warning(start_dt, end_dt)
 
     if verbose:
         print("This is a large query, it may take a moment to complete", flush=True)
@@ -66,7 +66,7 @@ def _handle_request(start_dt: date, end_dt: date, step: int, verbose: bool,
 
     with tqdm(total=len(date_range)) as progress:
         if parallel:
-            with concurrent.futures.ProcessPoolExecutor() as executor:
+            with concurrent.futures.ThreadPoolExecutor() as executor:
                 futures = {executor.submit(_small_request, subq_start, subq_end, team=team)
                         for subq_start, subq_end in date_range}
                 for future in concurrent.futures.as_completed(futures):

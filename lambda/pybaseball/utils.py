@@ -8,7 +8,7 @@ from typing import Iterator, Optional, Union, Tuple
 import pandas as pd
 import requests
 
-from . import cache
+# from . import cache
 
 DATE_FORMAT = "%Y-%m-%d"
 
@@ -201,7 +201,7 @@ def sanitize_input(start_dt: Optional[str], end_dt: Optional[str], player_id: Op
 	return str(start_dt_date), str(end_dt_date), player_id_str
 
 
-@cache.df_cache()
+# @cache.df_cache()
 def split_request(start_dt: str, end_dt: str, player_id: int, url: str) -> pd.DataFrame:
 	"""
 	Splits Statcast queries to avoid request timeouts

@@ -6,14 +6,12 @@ from video import get_video
 
 
 def lambda_handler(event, context):
-    # yesterday = date.today() - timedelta(days=1)
-    # yesterday_str = yesterday.strftime('%Y-%m-%d')
-    yesterday_str = '2022-06-08'
+    yesterday = date.today() - timedelta(days=1)
+    yesterday_str = yesterday.strftime('%Y-%m-%d')
+    print(yesterday_str + ':')
 
-    try:
-        pitch = barrel(yesterday_str)
-    except Exception as e:
-        print(e)
+    # TODO: handle days with no mlb games
+    pitch = barrel(yesterday_str)
 
     path = get_video(pitch)
     tweet_id = tweet_with_video(pitch, path)
@@ -24,4 +22,8 @@ def lambda_handler(event, context):
         tweet_with_video(hr_makeup, path, tweet_id)
 
 if __name__  == '__main__':
+    import time
+    start_time = time.time()
     lambda_handler('', '')
+    print("--- %s seconds ---" % (time.time() - start_time))
+    
