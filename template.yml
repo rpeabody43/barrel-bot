@@ -4,7 +4,7 @@ Description: An AWS Lambda application
 
 Globals:
   Function:
-    Timeout: 60
+    Timeout: 100
 
 Resources:
   TweetBarrel:
@@ -12,5 +12,5 @@ Resources:
     Properties:
       Handler: lambda_function.lambda_handler
       Runtime: python3.9
-      CodeUri: lambda/.
+      CodeUri: lambda_deploy/.
       Description: Make a tweet on behalf of @mlb_barrels
