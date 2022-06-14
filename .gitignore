@@ -3,7 +3,7 @@ tmp/
 
 .env
 env/
-branding/
+
 .aws-sam/
 .idea/
 pkg_size.py
