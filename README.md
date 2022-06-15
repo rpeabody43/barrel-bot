@@ -3,7 +3,7 @@
 A twitter bot that tweets the hardest hit baseball in MLB each day, complete with video and relevent statistics. Created with pybaseball, tweepy, and AWS Lambda.
 
 ## Project Outline
-- The source code is located in ./lambda_deploy, including `lambda_function.py`, the entrypoint for .
+- The source code is located in ./lambda_deploy, including `lambda_function.py`, the entrypoint for the function.
 - `test.py` returns the information in the console, along with video links from Baseball Savant.
 
 ## Some Notes
