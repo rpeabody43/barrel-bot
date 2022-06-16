@@ -9,9 +9,12 @@ def lambda_handler(event, context):
     yesterday = date.today() - timedelta(days=1)
     yesterday_str = yesterday.strftime('%Y-%m-%d')
     print(yesterday_str + ':')
-
-    # TODO: handle days with no mlb games
-    pitch = barrel(yesterday_str)
+    try:    
+        pitch = barrel(yesterday_str) # Automatically prints link to Baseball Savant page
+    except Exception as e:
+        if str(e) == 'Empty DataFrame':
+            print('no games on this day')
+        return
 
     path = get_video(pitch)
     tweet_id = tweet_with_video(pitch, path)
