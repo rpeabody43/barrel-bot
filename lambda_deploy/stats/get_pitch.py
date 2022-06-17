@@ -15,6 +15,7 @@ def data_from_idx(df: DataFrame, idx: int, date: str) -> dict:
         'batter_name': names.get_player_name(batter_id, description),
         'batting_team': df.at[idx, 'home_team'] if df.at[idx, 'inning_topbot'] == 'Bot' else df.at[idx, 'away_team'],
         'type': df.at[idx, 'type'],
-        'outcome': df.at[idx, 'events']
+        'outcome': df.at[idx, 'events'],
+        'xba' : df.at[idx, 'estimated_ba_using_speedangle']
     }
     return data
