@@ -3,6 +3,7 @@
 from datetime import date, timedelta
 from stats import get_max_barrel as barrel
 from video import get_video
+from twitter.tweet import _fmt_tweet
 
 def main():
     auto_open = True
@@ -13,9 +14,7 @@ def main():
         if str(e) == 'Empty DataFrame':
             print('no games on this day')
         return
-    # filepath = get_video(pitch)
-    # yesterday = date.today() - timedelta(days=1)
-    # yesterday_str = yesterday.strftime('%Y-%m-%d')
+    print(_fmt_tweet(pitch))
 
 
 if __name__  == '__main__':

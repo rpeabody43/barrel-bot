@@ -46,7 +46,9 @@ def _fmt_tweet (pitch: dict):
         print(f'exception on hashtag key {htag_key} or outcome key {outcome_key}')
     ev = pitch['velo']
     ang = pitch['ang']
-    xba = '{0:.3f}'.format(float(pitch['xba']))[1:]
+    xba = '{0:.3f}'.format(float(pitch['xba']))
+    if pitch['xba'] != 1.0:
+        xba = xba[1:]
     lines = [ 
         f'{hitter_name} off {pitcher_name}',
         f'🔥 {ev} mph, {ang}°',
