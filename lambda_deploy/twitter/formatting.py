@@ -40,6 +40,7 @@ hashtags = {
     'COL' : '#Rockies',
     'LAD' : '#AlwaysLA',
     'SDP' : '#TimeToShine',
+    'SD' : '#TimeToShine',
     'SFG' : '#SFGameUp'
 }
 
