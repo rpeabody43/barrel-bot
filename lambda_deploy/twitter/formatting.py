@@ -41,7 +41,8 @@ hashtags = {
     'LAD' : '#AlwaysLA',
     'SDP' : '#TimeToShine',
     'SD' : '#TimeToShine',
-    'SFG' : '#SFGameUp'
+    'SFG' : '#SFGameUp',
+    'SF' : '#SFGameUp'
 }
 
 outcomes = {
