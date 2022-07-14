@@ -13,7 +13,6 @@ hashtags = {
     'CHW' : '#ChangeTheGame',
     'CLE' : '#ForTheLand',
     'DET' : '#DetroitRoots',
-    'KCR' : '#TogetherRoyal',
     'KC' : '#TogetherRoyal',
     'MIN' : '#MNTwins',
     # AL West
@@ -28,7 +27,7 @@ hashtags = {
     'MIA' : '#MakeItMiami',
     'NYM' : '#LGM',
     'PHI' : '#RingTheBell',
-    'WSN' : '#NATITUDE',
+    'WSH' : '#NATITUDE',
     # NL Central
     'CHC' : '#ItsDifferentHere',
     'CIN' : '#ATOBTTR',
@@ -39,9 +38,7 @@ hashtags = {
     'ARI' : '#Dbacks',
     'COL' : '#Rockies',
     'LAD' : '#AlwaysLA',
-    'SDP' : '#TimeToShine',
     'SD' : '#TimeToShine',
-    'SFG' : '#SFGameUp',
     'SF' : '#SFGameUp'
 }
 

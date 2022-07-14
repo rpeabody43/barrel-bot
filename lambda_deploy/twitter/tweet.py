@@ -37,13 +37,16 @@ def _fmt_tweet (pitch: dict):
     date = pitch['date']
     hitter_name = pitch['batter_name']
     pitcher_name = pitch['pitcher_name']
+
+    tweet_with_hashtag: bool = True
     try:
         team_hashtag = hashtags[pitch['batting_team']]
-        outcome = outcomes[pitch['outcome']]
     except KeyError:
         htag_key = pitch['batting_team']
-        outcome_key = pitch['outcome']
-        print(f'exception on hashtag key {htag_key} or outcome key {outcome_key}')
+        print(f'exception on hashtag key {htag_key}')
+        tweet_with_hashtag = False
+    
+    outcome = outcomes[pitch['outcome']]
     ev = pitch['velo']
     ang = pitch['ang']
     xba = '{0:.3f}'.format(float(pitch['xba']))
@@ -53,8 +56,9 @@ def _fmt_tweet (pitch: dict):
         f'{hitter_name} off {pitcher_name}',
         f'🔥 {ev} mph, {ang}°',
         f'{outcome} ({xba} xBA)',
-        '',
-        team_hashtag]
+        '']
+
+    if tweet_with_hashtag: lines.append(team_hashtag)
 
     out = ''
     for str in lines:
