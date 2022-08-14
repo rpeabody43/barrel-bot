@@ -10,7 +10,6 @@ hashtags = {
     'TOR' : '#NextLevel',
     # AL Central
     'CWS' : '#ChangeTheGame',
-    'CHW' : '#ChangeTheGame',
     'CLE' : '#ForTheLand',
     'DET' : '#DetroitRoots',
     'KC' : '#TogetherRoyal',
