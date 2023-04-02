@@ -46,8 +46,8 @@ subqueries if that happens.'''
 
 
 # def _check_warning(start_dt: date, end_dt: date) -> None:
-#     if not cache.config.enabled and (end_dt - start_dt).days >= 42:
-#         warnings.warn(_OVERSIZE_WARNING)
+    # if not cache.config.enabled and (end_dt - start_dt).days >= 42:
+        # warnings.warn(_OVERSIZE_WARNING)
 
 
 def _handle_request(start_dt: date, end_dt: date, step: int, verbose: bool,
@@ -66,6 +66,9 @@ def _handle_request(start_dt: date, end_dt: date, step: int, verbose: bool,
 
     with tqdm(total=len(date_range)) as progress:
         if parallel:
+            # Use ThreadPoolExecutor over ProcessPoolExecutor because ProcessPoolExecutor doesn't work with
+            # notebooks and python command line due to the fact it won't have a `__main__` module.
+            # See https://docs.python.org/3.7/library/concurrent.futures.html#processpoolexecutor
             with concurrent.futures.ThreadPoolExecutor() as executor:
                 futures = {executor.submit(_small_request, subq_start, subq_end, team=team)
                         for subq_start, subq_end in date_range}

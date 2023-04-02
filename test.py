@@ -8,12 +8,13 @@ from twitter.tweet import _fmt_tweet
 def main():
     auto_open = True
     date = input('YYYY-MM-DD: ')
-    try:    
-        pitch = barrel(date) # Automatically prints link to Baseball Savant page
-    except Exception as e:
-        if str(e) == 'Empty DataFrame':
-            print('no games on this day')
-        return
+    # try:    
+    pitch = barrel(date) # Automatically prints link to Baseball Savant page
+    # except Exception as e:
+    #     print(e)
+    #     if str(e) == 'Empty DataFrame':
+    #         print('no games on this day')
+    #     return
     print(_fmt_tweet(pitch))
 
 

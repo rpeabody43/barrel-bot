@@ -1,14 +1,14 @@
 from datetime import datetime
 from typing import Any, Callable, Dict, List, Optional, Union
 
-# import lxml.etree
+import lxml.etree
 import pandas as pd
 import requests
 
 from ..datahelpers import postprocessing
 from ..datahelpers.column_mapper import ColumnListMapperFunction
 
-# RowIdFunction = Optional[Callable[[Any, lxml.etree.Element], Optional[Union[int, str]]]]
+RowIdFunction = Optional[Callable[[Any, lxml.etree.Element], Optional[Union[int, str]]]]
 
 class HTMLTableProcessor:
     def __init__(self, root_url: str, headings_xpath: str, data_rows_xpath: str, data_cell_xpath: str,
