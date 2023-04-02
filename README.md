@@ -7,7 +7,7 @@ A twitter bot that tweets the hardest hit baseball in MLB each day, complete wit
 - `test.py` returns the information in the console, along with video links from Baseball Savant.
 
 ## Some Notes
- You'll notice that [pybaseball](https://github.com/jldbc/pybaseball), a great library by James LeDoux, is not a dependency but a part of the source code. This was done because I had to remove a significant portion of its dependencies (matplotlib, pyarrow), in order to stay within the 250 MB limit. In addition, with Lambda having a read-only filesystem, pybaseball's caching functions and multiprocessing model would not work.
+ You'll notice that the source code includes a fork of [pybaseball](https://github.com/jldbc/pybaseball), a great library by James LeDoux. I made a fork because I had to remove a significant portion of its dependencies (matplotlib, pyarrow, scipy), in order to stay within the 250 MB limit. In addition, with Lambda having a read-only filesystem, pybaseball's caching functions and would not work.
 
 
 ## Example
