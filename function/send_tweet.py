@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from datetime import date, timedelta
 
 from twitter import tweet_with_video
@@ -6,6 +7,8 @@ from video import get_video
 
 
 def lambda_handler(event, context):
+    load_dotenv()
+
     yesterday = date.today() - timedelta(days=1)
     yesterday_str = yesterday.strftime('%Y-%m-%d')
     print(yesterday_str + ':')
