@@ -1,9 +1,9 @@
 # Barrel Bot
 ### [@mlb_barrels](https://twitter.com/mlb_barrels)
-A twitter bot that tweets the hardest hit baseball in MLB each day, complete with video and relevent statistics. Created with pybaseball, tweepy, and AWS Lambda.
+A twitter bot that tweets the hardest hit baseball in MLB each day, complete with video and relevent statistics. Created with pybaseball, tweepy, and a Raspberry Pi 3 (formerly on AWS Lambda).
 
 ## Project Outline
-- The source code is located in ./lambda_deploy, including `lambda_function.py`, the entrypoint for the function.
+- The source code is located in ./function, including `send_tweet.py`, the entrypoint for the function.
 - `test.py` returns the information in the console, along with video links from Baseball Savant.
 
 ## Some Notes
