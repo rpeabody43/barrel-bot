@@ -9,15 +9,15 @@ hashtags = {
     'TB'  : '#RaysUp',
     'TOR' : '#NextLevel',
     # AL Central
-    'CWS' : '#ChangeTheGame',
+    'CWS' : '#WhiteSox',
     'CLE' : '#ForTheLand',
-    'DET' : '#DetroitRoots',
-    'KC' : '#TogetherRoyal',
+    'DET' : '#RepDetroit',
+    'KC' : '#WelcomeToTheCity',
     'MIN' : '#MNTwins',
     # AL West
-    'HOU' : '#LevelUp',
+    'HOU' : '#Ready2Reign',
     'LAA' : '#GoHalos',
-    'OAK' : '#DrumTogether',
+    'OAK' : '#Athletics',
     'SEA' : '#SeaUsRise',
     'TEX' : '#StraightUpTX',
 
@@ -28,17 +28,17 @@ hashtags = {
     'PHI' : '#RingTheBell',
     'WSH' : '#NATITUDE',
     # NL Central
-    'CHC' : '#ItsDifferentHere',
+    'CHC' : '#NextStartsHere',
     'CIN' : '#ATOBTTR',
     'MIL' : '#ThisIsMyCrew',
     'PIT' : '#LetsGoBucs',
     'STL' : '#STLCards',
     # NL West
-    'ARI' : '#Dbacks',
+    'ARI' : '#ArizonaBorn',
     'COL' : '#Rockies',
-    'LAD' : '#AlwaysLA',
-    'SD' : '#TimeToShine',
-    'SF' : '#SFGameUp'
+    'LAD' : '#HereToPlay',
+    'SD' : '#BringTheGold',
+    'SF' : '#SFGiants'
 }
 
 outcomes = {
