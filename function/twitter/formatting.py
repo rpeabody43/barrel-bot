@@ -34,7 +34,7 @@ hashtags = {
     'PIT' : '#LetsGoBucs',
     'STL' : '#STLCards',
     # NL West
-    'ARI' : '#ArizonaBorn',
+    'AZ' : '#ArizonaBorn',
     'COL' : '#Rockies',
     'LAD' : '#HereToPlay',
     'SD' : '#BringTheGold',
