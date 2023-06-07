@@ -1,9 +1,10 @@
 import tweepy
+import tweepy.client
 
 from .credentials import load_credentials
 from .formatting import hashtags, outcomes
 
-def authenticate () -> tweepy.API:
+def v1authenticate () -> tweepy.API:
     keys = load_credentials()
     auth = tweepy.OAuthHandler(keys['CONSUMER_KEY'], keys['CONSUMER_SECRET'])
     auth.set_access_token(keys['ACCESS_TOKEN'], keys['ACCESS_SECRET'])
@@ -11,11 +12,22 @@ def authenticate () -> tweepy.API:
 
     return api
 
+def v2authenticate () -> tweepy.Client:
+    keys = load_credentials()
+    client = tweepy.Client(
+        consumer_key=keys['CONSUMER_KEY'],
+        consumer_secret=keys['CONSUMER_SECRET'],
+        access_token=keys['ACCESS_TOKEN'],
+        access_token_secret=keys['ACCESS_SECRET']
+        )
+
+    return client
+
 def test_tweet ():
-    api = authenticate()
+    client = v2authenticate()
     while True:
         tweet = input('DAY: ')
-        response = api.update_status(tweet)
+        response = client.create_tweet(text=tweet)
         print(response)
 
 def tweet_with_video (pitch: dict, filepath: str, reply: int = None):
@@ -23,12 +35,15 @@ def tweet_with_video (pitch: dict, filepath: str, reply: int = None):
     is_reply = reply != None
     if is_reply:
         text = '@mlb_barrels\nHere\'s the hardest hit ball that left the yard yesterday\n' + text
-    api = authenticate()
-    media: tweepy.Media = api.media_upload(filepath, media_category='tweet_video')
+    v1_client = v1authenticate()
+    v2_client = v2authenticate()
+    media: tweepy.Media = v1_client.media_upload(filepath, media_category='tweet_video')
     media_id = media.media_id_string
     # print(media)
-    response: tweepy.Tweet = api.update_status(status=text, media_ids=[media_id], in_reply_to_status_id=reply)
-    id = response.id
+    response: tweepy.client.Response = v2_client.create_tweet(text=text, media_ids=[media_id], in_reply_to_tweet_id=reply)
+    print(type(response))
+    print(response)
+    id = response.data['id']
     return id
     # print(response)
 
